@@ -24,6 +24,7 @@ public class Board {
 	
 	// print out the content of the board
 	public void printBoard() {
+		System.out.println();
 		int positionOnBoard = 1;
 		for (int m = 0; m < ROWS; m++) {
 			for (int n = 0; n < COLS; n++) {
@@ -37,20 +38,22 @@ public class Board {
 				}
 				positionOnBoard++;
 			}
-			System.out.println("\n---------");
+			if (m < ROWS-1) {
+				System.out.println("\n---------");
+			}			
 		}
+		System.out.println();
 	}
 	
 	public boolean makeAMove(Player thePlayer, Scanner userInputScanner) throws Exception {
 		try {
-		System.out.println("****************************");
 		System.out.println("\n" + thePlayer.getName() + " please enter a field number for your next move: ");
-		int position = userInputScanner.nextInt(); 
+		int position = userInputScanner.nextInt();
 		this.convertPositionEntry(position);
 		if (this.getBoardToken(rowEntry, colEntry) == '*') {
 			this.setBoardToken(rowEntry, colEntry, thePlayer.getSymbol());
 		} else {
-			System.out.println("open your eyes, that field was already taken! try again ...");
+			System.out.println("sorry " + thePlayer.getName() + " that field was already taken! try again ...");
 			makeAMove(thePlayer, userInputScanner);
 		}
 		this.checkForGameOver(thePlayer);

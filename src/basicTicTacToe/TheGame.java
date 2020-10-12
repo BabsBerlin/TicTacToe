@@ -25,7 +25,7 @@ public class TheGame {
 	// initialize the game by creating two players and a board
 	private void initialize() {
 		System.out.println("*********************");		
-		System.out.println("Welcome to TicTacToe!");
+		System.out.println("welcome to TicTacToe!");
 		System.out.println("*********************");		
 		
 		userInputScanner = new Scanner(System.in);
@@ -57,10 +57,9 @@ public class TheGame {
 		System.out.println("************** GAME OVER! **************");
 		System.out.println("****************************************");
 		if (playerONE.getIsWinner()) {
-			System.out.println("****************************************");
-			System.out.println("***** we have a winner: " + playerONE.getName() + " *****");
+			System.out.println("*** we have a winner: congratulations " + playerONE.getName() + " ***");
 		} else if (playerTWO.getIsWinner()) {
-			System.out.println("***** we have a winner: " + playerTWO.getName() + " *****");
+			System.out.println("*** we have a winner: congratulations " + playerTWO.getName() + " ***");
 		} else {
 			System.out.println("************* it's a tie!" + " *************");
 		}
