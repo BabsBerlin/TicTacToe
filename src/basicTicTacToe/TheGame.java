@@ -53,6 +53,7 @@ public class TheGame {
 	
 	// print out the result and close the scanner
 	private void closeTheGame() {
+		System.out.println();
 		System.out.println("****************************************");
 		System.out.println("************** GAME OVER! **************");
 		System.out.println("****************************************");

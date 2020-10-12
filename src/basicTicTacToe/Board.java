@@ -1,6 +1,7 @@
 package basicTicTacToe;
 
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Board {
@@ -45,24 +46,25 @@ public class Board {
 		System.out.println();
 	}
 	
-	public boolean makeAMove(Player thePlayer, Scanner userInputScanner) throws Exception {
+	public void makeAMove(Player thePlayer, Scanner userInputScanner) throws Exception {
 		try {
-		System.out.println("\n" + thePlayer.getName() + " please enter a field number for your next move: ");
+		System.out.println("\n" + thePlayer.getName() + " (" + thePlayer.getSymbol() + ") please enter a field number for your next move: ");
 		int position = userInputScanner.nextInt();
 		this.convertPositionEntry(position);
 		if (this.getBoardToken(rowEntry, colEntry) == '*') {
 			this.setBoardToken(rowEntry, colEntry, thePlayer.getSymbol());
 		} else {
-			System.out.println("sorry " + thePlayer.getName() + " that field was already taken! try again ...");
+			System.out.println("## sorry " + thePlayer.getName() + " that field does not exist or it was already taken! please try again ...");
 			makeAMove(thePlayer, userInputScanner);
 		}
 		this.checkForGameOver(thePlayer);
-		return true;
 		} 
   
-        catch (Exception e) { 
-            System.out.println("Exception thrown:\n" + e); 
-            return false;
+        catch (InputMismatchException  e) { 
+            System.out.println("## Exception thrown: " + e);
+            System.out.println("## you should type in a number between 1..9!");
+            userInputScanner.nextLine();
+            makeAMove(thePlayer, userInputScanner);
         } 
 	}
 	
