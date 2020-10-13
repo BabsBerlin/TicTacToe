@@ -15,7 +15,7 @@ public class TheGame {
 	public static void main(String[] args) throws Exception {
 
 		TheGame theGame = new TheGame();
-		theGame.initialize();		
+		theGame.initialize();
 		theGame.play();		
 		
 	}
@@ -40,6 +40,10 @@ public class TheGame {
 	
 	
 	private void play() throws Exception {
+		System.out.println("*******************");
+		System.out.println("let the game begin!");
+		System.out.println();
+		
 		// players take turns to set their tokens until GameOver is reached
 		while (!theBoard.getGameOver()) {
 			currentPlayer.makeAMove(theBoard, userInputScanner);
